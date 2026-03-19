@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dd40c28-ae7e-4051-9ece-b0f69d3436b5" name="Changes" comment="Added README.md and LICENSE.md.">
-      <change afterPath="$PROJECT_DIR$/poster.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/predictor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/Blue_Marble_2002.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/propagator.py" beforeDir="false" afterPath="$PROJECT_DIR$/propagator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/visualiser.py" beforeDir="false" />
+    <list default="true" id="8dd40c28-ae7e-4051-9ece-b0f69d3436b5" name="Changes" comment="General tidying: removing old satellite-tracking parts, updating README.md, etc.">
+      <change afterPath="$PROJECT_DIR$/.github/workflows/bot.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +119,47 @@
       <option name="project" value="LOCAL" />
       <updated>1773177068904</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Updated propagator.py and refactored.">
+      <option name="closed" value="true" />
+      <created>1773960357273</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1773960357273</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Created predictor.py">
+      <option name="closed" value="true" />
+      <created>1773960370897</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1773960370897</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Created poster.py">
+      <option name="closed" value="true" />
+      <created>1773960379642</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1773960379642</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updated main.py.">
+      <option name="closed" value="true" />
+      <created>1773960392857</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1773960392857</updated>
+    </task>
+    <task id="LOCAL-00007" summary="General tidying: removing old satellite-tracking parts, updating README.md, etc.">
+      <option name="closed" value="true" />
+      <created>1773960424336</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1773960424336</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +176,11 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit." />
     <MESSAGE value="Added README.md and LICENSE.md." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added README.md and LICENSE.md." />
+    <MESSAGE value="Updated propagator.py and refactored." />
+    <MESSAGE value="Created predictor.py" />
+    <MESSAGE value="Created poster.py" />
+    <MESSAGE value="Updated main.py." />
+    <MESSAGE value="General tidying: removing old satellite-tracking parts, updating README.md, etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="General tidying: removing old satellite-tracking parts, updating README.md, etc." />
   </component>
 </project>
