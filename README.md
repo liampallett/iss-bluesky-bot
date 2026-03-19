@@ -1,6 +1,6 @@
-# Project Title
+# ISS Bluesky Bot
 
-Satellite visualiser using [celestrak.org](celestrak.org) written in Python.
+Bluesky bot that posts pass predictions for Sheffield, UK.
 
 ---
 
@@ -8,7 +8,9 @@ Satellite visualiser using [celestrak.org](celestrak.org) written in Python.
 
 # What the Project Is
 
-- Tracks any satellite/group of satellites (currently configured for space stations).
+- Tracks the ISS
+- Makes pass predictions
+- Posts on Bluesky
 
 ---
 
@@ -18,14 +20,13 @@ Satellite visualiser using [celestrak.org](celestrak.org) written in Python.
 - Propagates orbit forward from TLE epoch to current time.
 - Converts coordinate frames into Earth latitude/longitude.
 - Applies GST rotation to account for Earth's rotation.
-- Displays this on a equirectangular image of the Earth.
 
 ---
 
 # Tech Stack
 
 - Languages: Python
-- Libraries: matplotlib, requests
+- Libraries: requests
 - Tools: Celestrak
 
 ---
@@ -33,7 +34,6 @@ Satellite visualiser using [celestrak.org](celestrak.org) written in Python.
 # What I Learned
 
 - API calling
-- Advanced matplotlib 
 - Keplerian orbital mechanics
 - Co-ordinate frame translation
 - Orbital predictions
@@ -45,12 +45,9 @@ Satellite visualiser using [celestrak.org](celestrak.org) written in Python.
 ```
 ├── LICENSE.md
 ├── README.md
-├── images
-│   └── Blue_Marble_2002.jpg
 ├── main.py
 ├── propagator.py
 ├── requirements.txt
-└── visualiser.py
 ```
 
 ---
@@ -67,10 +64,6 @@ python main.py
 
 # Future Improvements
 
-- Better UI styling
-- SGP4 implementations
-- Pass predictions
-- Live TLE refreshing
-- Multi-satellite trail mode
+
 
 ---
