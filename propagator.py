@@ -141,11 +141,11 @@ class OrbitPropagator():
 
         return (lat, lon, altitude)
 
-    def get_position(self, at_time=None):
+    def get_eci_position(self, at_time=None):
         """
-        Calculates the position by chaining unction calls.
+        Calculates the ECI frame at a given time.
         :param at_time: Default None, given time to calculate position of.
-        :return: A dictionary containing the latitude, longitude and altitude of the object.
+        :return: A dictionary containing the ECI frame.
         """
         if at_time is None:
             at_time = datetime.now(timezone.utc)
@@ -159,7 +159,23 @@ class OrbitPropagator():
         orbital_radius = self._calculate_orbital_radius(eccentric_anomaly, self.eccentricity)
         x, y, z = self._calculate_perifocal_position(orbital_radius, true_anomaly)
         X, Y, Z = self._perifocal_to_eci(x, y)
-        latitude, longitude, altitude = self._eci_to_lat_lon(X, Y, Z, at_time)
+
+        eci_dict = {
+            "X": X,
+            "Y": Y,
+            "Z": Z
+        }
+
+        return eci_dict
+
+    def get_position(self, at_time=None):
+        """
+        Calculates the position by chaining function calls.
+        :param at_time: Default None, given time to calculate position of.
+        :return: A dictionary containing the latitude, longitude and altitude of the object.
+        """
+        eci_dict = self.get_eci_position(at_time)
+        latitude, longitude, altitude = self._eci_to_lat_lon(eci_dict["X"], eci_dict["Y"], eci_dict["Z"], at_time)
 
         lat_lon_dict = {
             "LATITUDE": latitude,
