@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dd40c28-ae7e-4051-9ece-b0f69d3436b5" name="Changes" comment="General tidying: removing old satellite-tracking parts, updating README.md, etc.">
-      <change afterPath="$PROJECT_DIR$/.github/workflows/bot.yml" afterDir="false" />
-    </list>
+    <list default="true" id="8dd40c28-ae7e-4051-9ece-b0f69d3436b5" name="Changes" comment="Removed numpy dependency and added user header to Celestrak API call." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,7 +157,31 @@
       <option name="project" value="LOCAL" />
       <updated>1773960424336</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Created bot.yml to schedule posts using cron.">
+      <option name="closed" value="true" />
+      <created>1773960715319</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1773960715319</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Updated bot.yml to allow for manual action execution for testing.">
+      <option name="closed" value="true" />
+      <created>1773960836974</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1773960836974</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Removed numpy dependency and added user header to Celestrak API call.">
+      <option name="closed" value="true" />
+      <created>1773961012906</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1773961012906</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -181,6 +203,9 @@
     <MESSAGE value="Created poster.py" />
     <MESSAGE value="Updated main.py." />
     <MESSAGE value="General tidying: removing old satellite-tracking parts, updating README.md, etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="General tidying: removing old satellite-tracking parts, updating README.md, etc." />
+    <MESSAGE value="Created bot.yml to schedule posts using cron." />
+    <MESSAGE value="Updated bot.yml to allow for manual action execution for testing." />
+    <MESSAGE value="Removed numpy dependency and added user header to Celestrak API call." />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed numpy dependency and added user header to Celestrak API call." />
   </component>
 </project>

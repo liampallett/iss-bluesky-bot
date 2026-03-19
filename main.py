@@ -93,8 +93,8 @@ if __name__ == "__main__":
                 post_result = poster.post(session_access_token, HANDLE, post_content)
             else:
                 pass
-    except requests.exceptions.HTTPError:
-        print("There was an issue with fetching the data.")
+    except requests.exceptions.HTTPError as e:
+        print(f"There was an issue with fetching the data: {e}")
     except ConnectionError:
         print("There was an issue connecting to the API.")
     except TimeoutError:
