@@ -1,8 +1,13 @@
-import requests
+import requests, os
+from datetime import datetime, timedelta, timezone
 from propagator import OrbitPropagator
-from visualiser import Dashboard
+from predictor import PathPredictor
+import poster
 
 BASE_URL = "https://celestrak.org/NORAD/elements/gp.php"
+
+HANDLE = os.environ.get("BSKY_HANDLE")
+APP_PASSWORD = os.environ.get("BSKY_APP_PASSWORD")
 
 def fetch_data(url):
     """
@@ -49,18 +54,45 @@ def parse_data(data):
 
     return parsed_stations
 
+def degrees_to_compass(degrees):
+    compass = ["N", "NE", "E", "SE", "S", "SW", "W", "NW"]
+
+    compass_index = round(degrees / 45) % 8
+
+    return compass[compass_index]
+
+def format_post(pass_dict):
+    rise_time = pass_dict["RISE_TIME"]
+    set_time = pass_dict["SET_TIME"]
+    max_elevation = pass_dict["MAX_ELEVATION"]
+    rise_azimuth = pass_dict["RISE_AZIMUTH"]
+
+    visible_time = (set_time - rise_time).seconds // 60
+
+    return f'🛰️ISS Pass over Sheffield\nRises: {rise_time.strftime("%H:%M")} UTC, {degrees_to_compass(rise_azimuth)} ({round(rise_azimuth)} deg)\nDuration: {visible_time} mins | Max elevation: {round(max_elevation, 1)} deg'
+
 if __name__ == "__main__":
-    CATALOGUE_NUMBER = "STATIONS"
-    query = f"?GROUP={CATALOGUE_NUMBER}&FORMAT=json"
+    CATALOGUE_NUMBER = "25544"
+    query = f"?CATNR={CATALOGUE_NUMBER}&FORMAT=json"
     url = BASE_URL + query
 
     try:
         data = fetch_data(url)
         parsed_data = parse_data(data)
 
-        propagators = [OrbitPropagator(station) for station in parsed_data]
+        propagator = OrbitPropagator(parsed_data[0])
+        predictor = PathPredictor(propagator, 53.38, -1.47, 0)
+        result = predictor.find_next_pass()
 
-        Dashboard(propagators, parsed_data)
+        if result is None:
+            print("No pass found in the next 24 hours.")
+        else:
+            if (result["RISE_TIME"] - datetime.now(timezone.utc)) <= timedelta(minutes=90):
+                post_content = format_post(result)
+                session_access_token = poster.create_session(HANDLE, APP_PASSWORD)
+                post_result = poster.post(session_access_token, HANDLE, post_content)
+            else:
+                pass
     except requests.exceptions.HTTPError:
         print("There was an issue with fetching the data.")
     except ConnectionError:
