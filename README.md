@@ -1,10 +1,9 @@
 # ISS Bluesky Bot
 
-Bluesky bot that posts pass predictions for Sheffield, UK.
+Bluesky bot that posts pass predictions for Sheffield, UK. Follow over at [@isspassbot.bsky.social](https://bsky.app/profile/isspassbot.bsky.social) Fork of my
+[satellite tracker](https://github.com/liampallett/satellite-tracker) project.
 
 ---
-
-![Satellite Visualiser](images/screenshot.png)
 
 # What the Project Is
 
@@ -20,6 +19,11 @@ Bluesky bot that posts pass predictions for Sheffield, UK.
 - Propagates orbit forward from TLE epoch to current time.
 - Converts coordinate frames into Earth latitude/longitude.
 - Applies GST rotation to account for Earth's rotation.
+- Computes observer position in Sheffield in ECEF and rotates into ECI using GST
+- Projects satellite-observer difference vector in the local frame
+- Calculate elevation and azimuth from difference vector
+- Predicts future passes by iterating over future elevation/azimuth until a visible pass is found
+- Posts to Bluesky
 
 ---
 
@@ -27,7 +31,7 @@ Bluesky bot that posts pass predictions for Sheffield, UK.
 
 - Languages: Python
 - Libraries: requests
-- Tools: Celestrak
+- Tools: Celestrak, Bluesky
 
 ---
 
@@ -37,6 +41,8 @@ Bluesky bot that posts pass predictions for Sheffield, UK.
 - Keplerian orbital mechanics
 - Co-ordinate frame translation
 - Orbital predictions
+- AT Protocol basics
+- GitHub Actions
 
 ---
 
@@ -46,8 +52,10 @@ Bluesky bot that posts pass predictions for Sheffield, UK.
 ├── LICENSE.md
 ├── README.md
 ├── main.py
+├── poster.py
+├── predictor.py
 ├── propagator.py
-├── requirements.txt
+└── requirements.txt
 ```
 
 ---
@@ -55,8 +63,10 @@ Bluesky bot that posts pass predictions for Sheffield, UK.
 # How to Run the Project
 
 ```bash
-git clone https://github.com/liampallett/satellite_visualiser.git
+git clone https://github.com/liampallett/iss-bluesky-bot.git
 pip install -r requirements.txt
+export BSKY_HANDLE="your-handle"
+export BSKY_APP_PASSWORD="your-app-password"
 python main.py
 ```
 
@@ -64,6 +74,6 @@ python main.py
 
 # Future Improvements
 
-
+- Only post about visible passes
 
 ---

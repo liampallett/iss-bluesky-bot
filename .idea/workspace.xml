@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dd40c28-ae7e-4051-9ece-b0f69d3436b5" name="Changes" comment="Removed numpy dependency and added user header to Celestrak API call." />
+    <list default="true" id="8dd40c28-ae7e-4051-9ece-b0f69d3436b5" name="Changes" comment="Updated main.py to show HTTP error for debugging.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/screenshot.png" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -181,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773961012906</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Updated main.py to show HTTP error for debugging.">
+      <option name="closed" value="true" />
+      <created>1773961122493</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1773961122493</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -206,6 +218,7 @@
     <MESSAGE value="Created bot.yml to schedule posts using cron." />
     <MESSAGE value="Updated bot.yml to allow for manual action execution for testing." />
     <MESSAGE value="Removed numpy dependency and added user header to Celestrak API call." />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed numpy dependency and added user header to Celestrak API call." />
+    <MESSAGE value="Updated main.py to show HTTP error for debugging." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated main.py to show HTTP error for debugging." />
   </component>
 </project>
