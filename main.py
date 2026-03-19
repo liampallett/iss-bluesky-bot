@@ -19,7 +19,7 @@ def fetch_data(url):
     :raises TimeoutError: If the request times out.
     """
     try:
-        request = requests.get(url)
+        request = requests.get(url, headers={"User-Agent": "iss-bluesky-bot/1.0"})
         request.raise_for_status()
         return request.json()
     except requests.exceptions.ConnectionError:
