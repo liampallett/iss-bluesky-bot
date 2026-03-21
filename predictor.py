@@ -14,6 +14,16 @@ class PathPredictor:
         self.phi = radians(self.lat)
         self.Lambda = radians(self.lon)
 
+    def _get_gst(self, at_time):
+        epoch = datetime(2000, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
+
+        days_since_epoch = (at_time - epoch).total_seconds() / 86400
+
+        gst_degrees = 280.46061837 + 360.98564736629 * days_since_epoch
+        gst = radians(gst_degrees) % (2 * pi)
+
+        return gst
+
     def _get_observer_ecef(self):
         sphere_radius = EARTH_RADIUS * 1000 + self.alt
 
@@ -24,12 +34,7 @@ class PathPredictor:
         return x, y, z
 
     def _observer_ecef_to_eci(self, at_time):
-        epoch = datetime(2000, 1, 1, 12, 0, 0, tzinfo=timezone.utc)
-
-        days_since_epoch = (at_time - epoch).total_seconds() / 86400
-
-        gst_degrees = 280.46061837 + 360.98564736629 * days_since_epoch
-        gst = radians(gst_degrees) % (2 * pi)
+        gst = self._get_gst(at_time)
 
         x_ecef, y_ecef, z_ecef = self._get_observer_ecef()
 
@@ -52,10 +57,15 @@ class PathPredictor:
 
         return dX, dY, dZ, slant_range
 
-    def _to_sez(self, dX, dY, dZ):
-        south_vector = [sin(self.phi)*cos(self.Lambda), sin(self.phi)*sin(self.Lambda), -cos(self.phi)]
-        east_vector = [-sin(self.Lambda), cos(self.Lambda), 0]
-        zenith_vector = [cos(self.phi)*cos(self.Lambda), cos(self.phi)*sin(self.Lambda), sin(self.phi)]
+    def _to_sez(self, dX, dY, dZ, at_time):
+        gst = self._get_gst(at_time)
+
+        phi = self.phi
+        Lambda = self.Lambda + gst
+
+        south_vector = [sin(phi)*cos(Lambda), sin(phi)*sin(Lambda), -cos(phi)]
+        east_vector = [-sin(Lambda), cos(Lambda), 0]
+        zenith_vector = [cos(phi)*cos(Lambda), cos(phi)*sin(Lambda), sin(phi)]
 
         s = dX*south_vector[0] + dY*south_vector[1] + dZ*south_vector[2]
         e = dX*east_vector[0] + dY*east_vector[1] + dZ*east_vector[2]
@@ -65,7 +75,7 @@ class PathPredictor:
 
     def _elevation_azimuth(self, at_time):
         dX, dY, dZ, slant_range = self._difference_vector(at_time)
-        south, east, zenith = self._to_sez(dX, dY, dZ)
+        south, east, zenith = self._to_sez(dX, dY, dZ, at_time)
 
         elevation_radians = asin(zenith / slant_range)
         elevation_degrees = degrees(elevation_radians)
@@ -91,8 +101,7 @@ class PathPredictor:
         while current_time < go_to:
             elevation, azimuth = self._elevation_azimuth(current_time)
 
-            if elevation > 10:
-                max_elevation = elevation
+            max_elevation = max(max_elevation, elevation)
 
             if prev_elevation <= 10 < elevation:
                 rise_time = current_time
